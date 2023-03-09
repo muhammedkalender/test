@@ -1,5 +1,6 @@
 <html>
 <body>
+	<label id="scroll"></label>
 <div style="height:2000px">zasdas<div id="test" style="background-color: red; overflow: scroll; width: 300px; max-height: 300px"><div style="height:2000px">xxx</div>zasdas</div></div>
 </body>
 <script type="text/javascript">
@@ -53,7 +54,8 @@ function enableScroll() {
   document.getElementById('test').addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
   document.getElementById('test').addEventListener('touchmove', preventDefault, wheelOpt); // mobile
   document.getElementById('test').addEventListener('keydown', preventDefaultForScrollKeys, false);
-
+ document.getElementById('test').addEventListener('scroll', (e) => {document.getElementById('scroll').innerHTML = document.getElementById('test').scrollY ??  document.getElementById('test').scrollTop; }, false);
+	
   setTimeout(() => {document.getElementById('test').scrollTo(220, 220); }, 5000);
 
 })();
